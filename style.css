@@ -218,6 +218,22 @@ a { color: inherit; }
   color: var(--text-muted);
 }
 
+.shot { background: var(--panel); }
+.shot img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  background: var(--panel-2);
+}
+.shot-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 8px 10px;
+}
+
 .window-body { padding: 20px 22px; }
 .window-body p { margin: 0 0 14px; color: var(--text-muted); font-size: 14.5px; }
 .window-body p:last-child { margin-bottom: 0; }
