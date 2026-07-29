@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mutiny — Bennett LaPides</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">~/<span>hlapides</span></div>
+    <nav class="nav">
+      <a href="https://github.com/HLaPides" target="_blank">github</a>
+      <a href="../index.html#">resume</a>
+      <a href="../index.html#">contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="project-header">
+    <a class="back-link" href="../index.html">&larr; all projects</a>
+    <h1>Mutiny</h1>
+    <p class="tagline">A pirate-themed tactical combat game with grid-based squad tactics with real cover, flanking, and line-of-sight.  Its built from scratch in C++ and all of the assets were created by me using Libresprite.</p>
+    <div class="project-meta">solo project &middot; C++17 &middot; raylib &middot; Tiled</div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/mutiny/screens/01-level-editor.png</div>
+    </div>
+    <img src="mutiny/screens/01-level-editor.png" alt="Tiled level editor showing the mutiny map with labeled spawn points for players, guards, soldiers, and the captain">
+    <div class="window-body">
+      <p>Levels are authored in Tiled rather than hardcoded this is the mutiny map with named spawn points (player_spawn, guard_spawn, soldier_spawn, captain_spawn) placed directly on the tilemap. The engine reads these labels at load time to place the squad and populate enemies, so building a new mission is a level-editing task, not a recompile.</p>
+    </div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/mutiny/screens/02-tactical-turn.png</div>
+    </div>
+    <img src="mutiny/screens/02-tactical-turn.png" alt="Turn 1 of a mission showing objectives, a movement range grid, and the Bosun's stats and abilities">
+    <div class="window-body">
+      <p>Turn 1 of the Mutiny mission. The yellow grid shows every tile the Bosun can reach this turn, and the bottom bar shows his state: 10/10 HP, 2/2 action points, and three available abilities (Shoot, Melee, and a free Rush) each of the four sqaudmembers has their own unique ability, one has a aimed shot for more damage, one applies an aim debuff, and the other heals</p>
+    </div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/mutiny/screens/03-flanking-attack.png</div>
+    </div>
+    <img src="mutiny/screens/03-flanking-attack.png" alt="Attack preview showing 99 percent to hit, 15 percent crit, and a flanking bonus against a flanked target">
+    <div class="window-body">
+      <p>The actual odds calculation, surfaced to the player rather than hidden: a 99% chance to hit with 15% crit, broken down into aim (+65), a flanking bonus (+30) because the target has no cover on this side, a range penalty (-2), and the target's defense (-5). The target is explicitly marked FLANKED.</p>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/mutiny/NOTES.md</div>
+    </div>
+    <div class="window-body">
+      <p>The core loop is an XCOM-style squad tactics system: each unit takes actions on a grid with real line-of-sight raycasting, a cover system that reduces hit chance based on terrain, and flanking detection that removes cover bonuses and grants an aim bonus when a target is attacked from an open side.</p>
+      <p> Currently there are 4 classes (Bosun, Sharpshooter, Medic, and Swashbuckler) and 3 enemy types (Soldier, Guard, and Captain). Each carry distinct movement, HP, aim, defense, and range stats. Abilities include Shoot, Melee, Aimed Shot, Heal, Rush, and a aim debuff called Dirty Trick, several with cooldowns.</p>
+      <p>Enemy AI isn't scripted per-encounter, the enemies each run their own decision logic, actively pathing to cover, finding flanking positions, and choosing when to hold cover rather than advance blindly.</p>
+
+      <div class="tags">
+        <span class="tag">C++17</span>
+        <span class="tag">raylib</span>
+        <span class="tag">Tiled (.tmj)</span>
+        <span class="tag">custom AI</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="links">
+    <a class="btn" href="https://github.com/HLaPides/tactics_game" target="_blank">view repo</a>
+  </div>
+</div>
+
+<script src="../site.js"></script>
+</body>
+</html>
