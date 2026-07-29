@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventory Manager</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">~/<span>hlapides</span></div>
+    <nav class="nav">
+      <a href="https://github.com/HLaPides" target="_blank">github</a>
+      <a href="../index.html#">resume</a>
+      <a href="../index.html#">contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="project-header">
+    <a class="back-link" href="../index.html">&larr; all projects</a>
+    <h1>Inventory manager</h1>
+    <p class="tagline">A desktop app for managing a personal inventory with images, pricing, and one-click Excel export.</p>
+    <div class="project-meta">solo project &middot; Java &middot; Swing &middot; Apache POI</div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/inventory/screens/01-empty-state.jpg</div>
+    </div>
+    <img src="inventory/screens/01-empty-state.jpg" alt="Inventory manager main window with an empty table">
+    <div class="window-body">
+      <p>The main window on launch: a form on the left for entering item details, and an empty table on the right. Columns cover name, description, condition, purchase and insured price, acquisition source, certificate-of-authenticity, and images. Its not pretty but it gets the job done.</p>
+    </div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/inventory/screens/02-populated.jpg</div>
+    </div>
+    <img src="inventory/screens/02-populated.jpg" alt="Inventory manager showing a populated item with an image attached">
+    <div class="window-body">
+      <p>An item added with an attached image. Every cell in the table is editable inline clicking a cell and typing updates it directly, saving to the database on focus loss with no separate save step.</p>
+    </div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/inventory/screens/03-excel-export.jpg</div>
+    </div>
+    <img src="inventory/screens/03-excel-export.jpg" alt="Exported Excel file with item fields and embedded image">
+    <div class="window-body">
+      <p>The result of hitting "Export to Excel" a real .xlsx file with every field and the embedded item image intact, generated through Apache POI so the inventory can leave the app and go straight into a spreadsheet.</p>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/inventory/NOTES.md</div>
+    </div>
+    <div class="window-body">
+      <p>Items are edited directly in the table click any cell and it saves to the database on focus loss, no separate save step. Each item tracks name, description, condition, purchase and insured price, source, and a certificate-of-authenticity flag, with an optional image attached.</p>
+      <p>Export produces a real .xlsx file with every field and embedded item images, using Apache POI, so the inventory can leave the app and go straight into a spreadsheet someone else can open.</p>
+      <p>Backed by a SQL database through a dedicated DAO layer, keeping persistence logic separate from the Swing UI and table model.</p>
+
+      <div class="tags">
+        <span class="tag">Java Swing</span>
+        <span class="tag">Apache POI</span>
+        <span class="tag">SQL / DAO</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="links">
+    <a class="btn" href="https://github.com/HLaPides/InventoryProject" target="_blank">view repo</a>
+  </div>
+</div>
+
+</body>
+</html>

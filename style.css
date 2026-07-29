@@ -179,8 +179,8 @@ a { color: inherit; }
   margin-bottom: 32px;
 }
 
-.media-slot {
-  aspect-ratio: 16/9;
+.shot-placeholder {
+  aspect-ratio: 16/10;
   background: var(--panel-2);
   display: flex;
   align-items: center;
@@ -191,15 +191,6 @@ a { color: inherit; }
   text-align: center;
   padding: 20px;
 }
-.media-slot small {
-  display: block;
-  margin-top: 8px;
-  font-size: 11px;
-  opacity: 0.7;
-}
-/* Once you have a real video, replace .media-slot with:
-   <video autoplay muted loop playsinline><source src="..."></video>
-   Once you have real screenshots, replace .shot-slot divs with <img> tags. */
 
 .shots {
   display: grid;
@@ -218,21 +209,12 @@ a { color: inherit; }
   color: var(--text-muted);
 }
 
-.shot { background: var(--panel); }
-.shot img {
+.shot-full img {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  object-position: top;
   display: block;
   background: var(--panel-2);
 }
-.shot-caption {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--text-muted);
-  padding: 8px 10px;
-}
+.shot-full .window-body p { margin: 0; }
 
 .window-body { padding: 20px 22px; }
 .window-body p { margin: 0 0 14px; color: var(--text-muted); font-size: 14.5px; }
