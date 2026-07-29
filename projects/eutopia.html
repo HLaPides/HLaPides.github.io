@@ -3,18 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EUtopia</title>
+<title>EUtopia — Hamilton LaPides</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 
 <div class="topbar">
   <div class="wrap">
-    <div class="brand">~/<span>hlapides</span></div>
+    <div class="brand">Hamilton LaPides</div>
     <nav class="nav">
       <a href="https://github.com/HLaPides" target="_blank">github</a>
-      <a href="../index.html#">resume</a>
-      <a href="../index.html#">contact</a>
+      <a href="../about.html">about</a>
     </nav>
   </div>
 </div>
@@ -27,79 +26,55 @@
     <div class="project-meta">team project (4) &middot; role: ML / turnout model &middot; Streamlit &middot; Python</div>
   </div>
 
-  <div class="window">
-    <div class="titlebar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="path">~/eutopia/model/evaluate.py</div>
+  <div class="panel">
+    <h2>Model overview</h2>
+    <div class="stat-row">
+      <div class="stat"><span class="num">0.79</span><span class="label">LOO-CV R&sup2;</span></div>
+      <div class="stat"><span class="num">77.6</span><span class="label">LOO-CV MSE</span></div>
+      <div class="stat"><span class="num">184</span><span class="label">training observations</span></div>
     </div>
-    <div class="window-body">
-      <div class="stat-row">
-        <div class="stat"><span class="num">0.79</span><span class="label">LOO-CV R&sup2;</span></div>
-        <div class="stat"><span class="num">77.6</span><span class="label">LOO-CV MSE</span></div>
-        <div class="stat"><span class="num">184</span><span class="label">training observations</span></div>
-      </div>
-      <p>An OLS linear regression model predicting EU parliamentary election voter turnout, validated with leave-one-out cross-validation across every historical observation rather than a single train/test split.</p>
-    </div>
+    <p>An OLS linear regression model predicting EU parliamentary election voter turnout, validated with leave-one-out cross-validation across every historical observation rather than a single train/test split.</p>
   </div>
 
-  <div class="window shot-full">
-    <div class="titlebar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="path">~/eutopia/screens/01-custom-simulation.png</div>
-    </div>
+  <div class="shot">
+    <div class="shot-index">01 / custom simulation</div>
     <img src="eutopia/screens/01-custom-simulation.png" alt="Custom simulation results showing predicted turnout, most similar country, and a feature comparison table">
-    <div class="window-body">
-      <p>The "Build Your Own Country" simulation: a student enters values like population, median age, unemployment, and whether voting is compulsory, and the model predicts EU election turnout for that hypothetical country. Here it predicts 80.5%, close to Luxembourg's real 2024 turnout of 82.3%. A feature-comparison table and turnout map ground the prediction against real countries rather than leaving it as an abstract number.</p>
-    </div>
+    <p class="shot-caption">The "Build Your Own Country" simulation: a student enters values like population, median age, unemployment, and whether voting is compulsory, and the model predicts EU election turnout for that hypothetical country. Here it predicts 80.5%, close to Luxembourg's real 2024 turnout of 82.3%. A feature-comparison table and turnout map ground the prediction against real countries rather than leaving it as an abstract number.</p>
   </div>
 
-  <div class="window shot-full">
-    <div class="titlebar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="path">~/eutopia/screens/02-model-evaluation.png</div>
-    </div>
+  <div class="shot">
+    <div class="shot-index">02 / model evaluation</div>
     <img src="eutopia/screens/02-model-evaluation.png" alt="Model evaluation page showing LOO-CV results and a table of model features and their effects">
-    <div class="window-body">
-      <p>The model page itself. Its accessible from the admin persona and allows the admin to run tests on the model. This page also contains information on the features: compulsory voting adds roughly 7 points of turnout, national turnout is the strongest single predictor, and regional effects range from a 5-point gap for Southern Europe up to a 20-point gap for Western Europe, both relative to an Eastern Europe baseline.</p>
-    </div>
+    <p class="shot-caption">The model page itself. It's accessible from the admin persona and lets the admin run tests on the model. This page also contains information on the features: compulsory voting adds roughly 7 points of turnout, national turnout is the strongest single predictor, and regional effects range from a 5-point gap for Southern Europe up to a 20-point gap for Western Europe, both relative to an Eastern Europe baseline.</p>
   </div>
 
-  <div class="window shot-full">
-    <div class="titlebar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="path">~/eutopia/screens/03-baseline-predictions.png</div>
-    </div>
+  <div class="shot">
+    <div class="shot-index">03 / 2029 baseline predictions</div>
     <img src="eutopia/screens/03-baseline-predictions.png" alt="Table of 2029 predicted EU election turnout for all 27 member states">
-    <div class="window-body">
-      <p>The admin also has access to predicted 2029 turnout for all 27 member states using each country's most recent feature values, ranging from Belgium at 85.7% down to Croatia at 31.3%</p>
+    <p class="shot-caption">The admin also has access to predicted 2029 turnout for all 27 member states using each country's most recent feature values, ranging from Belgium at 85.7% down to Croatia at 31.3%.</p>
+  </div>
+
+  <div class="panel">
+    <h2>How it works</h2>
+    <p>My contribution was the voter turnout model end to end: feature selection, the OLS regression itself, LOO-CV validation, and the baseline forecast for all 27 member states. Rather than treating turnout as an abstract statistic, the model is exposed directly in the app — students can build a hypothetical country and see a real prediction, and the model's own evaluation page is public rather than hidden in a notebook.</p>
+    <p>The rest of the platform, built alongside three teammates, wraps that model in a full civic education experience: three role-based views (Student, Teacher, EU Official) share the same underlying data, so personalized lessons, content authoring, and platform moderation all sit on one system rather than three disconnected tools.</p>
+    <p>Built as a 4-person team over one semester as part of the CS4973 Belgium Dialogue, integrating a Streamlit frontend, a relational database, and the model into one cohesive product on a fixed deadline.</p>
+
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">OLS regression</span>
+      <span class="tag">LOO-CV</span>
+      <span class="tag">Streamlit</span>
+      <span class="tag">relational DB</span>
     </div>
   </div>
 
-  <div class="window">
-    <div class="titlebar">
-      <div class="dots"><span></span><span></span><span></span></div>
-      <div class="path">~/eutopia/NOTES.md</div>
-    </div>
-    <div class="window-body">
-      <p>My contribution was the voter turnout model end to end: feature selection, the OLS regression itself, LOO-CV validation, and the baseline forecast for all 27 member states. Rather than treating turnout as an abstract statistic, the model is exposed directly in the app — students can build a hypothetical country and see a real prediction, and the model's own evaluation page is public rather than hidden in a notebook.</p>
-      <p>The rest of the platform, built alongside three teammates, wraps that model in a full civic education experience: three role-based views (Student, Teacher, EU Official) share the same underlying data, so personalized lessons, content authoring, and platform moderation all sit on one system rather than three disconnected tools.</p>
-      <p>Built as a 4-person team over one semester as part of the CS4973 Belgium Dialogue, integrating a Streamlit frontend, a relational database, and the model into one cohesive product on a fixed deadline.</p>
-
-      <div class="tags">
-        <span class="tag">Python</span>
-        <span class="tag">OLS regression</span>
-        <span class="tag">LOO-CV</span>
-        <span class="tag">Streamlit</span>
-        <span class="tag">relational DB</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="links" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+  <div class="links" style="flex-direction: column; align-items: flex-start; gap: 12px;">
     <div style="display: flex; gap: 16px;">
       <a class="btn" href="https://eutopia.neu-in-leuven.cloud" target="_blank">view live project</a>
-      <a class="btn" href="https://github.com/HLaPides/EUtopia_Doc_2026" target="_blank">view repo</a>
+      <a class="btn" href="https://github.com/HLaPides" target="_blank">view repo</a>
     </div>
+    <p class="note" style="margin: 0;">The live link is the full platform built by all 4 teammates, not just the turnout model above.</p>
   </div>
 </div>
 
