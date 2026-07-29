@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFL prediction tool </title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">~/<span>hlapides</span></div>
+    <nav class="nav">
+      <a href="https://github.com/HLaPides" target="_blank">github</a>
+      <a href="../index.html#">resume</a>
+      <a href="../index.html#">contact</a>
+    </nav>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="project-header">
+    <a class="back-link" href="../index.html">&larr; all projects</a>
+    <h1>NFL prediction tool</h1>
+    <p class="tagline">An NFL spread and player-prop prediction engine trained on 26 seasons of data. It doesn't try to beat Vegas on every game, it flags the specific games where it disagrees with the line by a meaningful margin, and only those get bet. I have yet to come up with a good name for it</p>
+    <div class="project-meta">solo project &middot; Python &middot; XGBoost &middot; Electron</div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/nfl-tool/screens/04-strategy-overview.png</div>
+    </div>
+    <img src="nfl-tool/screens/04-strategy-overview.png" alt="Strategy overview showing games analyzed, model accuracy, Vegas accuracy, and a season-by-season record table">
+    <div class="window-body">
+      <div class="stat-row">
+        <div class="stat"><span class="num">6,758</span><span class="label">games analyzed</span></div>
+        <div class="stat"><span class="num">66.4%</span><span class="label">model accuracy</span></div>
+        <div class="stat"><span class="num">66.5%</span><span class="label">Vegas accuracy</span></div>
+      </div>
+      <p>Across every game since 1999, raw model accuracy sits almost dead even with Vegas a -0.1% edge. I have tried to beat out Vegas on raw accuracy but I couldn't get past a + 0.1% edge so I switched strategy. It's built to find the specific games where it disagrees with the sportsbook's line, which is where the real edge shows up. It still makes predictions for every game and it also has props for the QB, RB, and WR</p>
+    </div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/nfl-tool/screens/05-game-picks-edge.png</div>
+    </div>
+    <img src="nfl-tool/screens/05-game-picks-edge.png" alt="Game picks with model line, Vegas line, and an edge value for each matchup">
+    <div class="window-body">
+      <p>Every game gets a line that the model predicts and a line from sportsbooks. I used the NFL-Readpy library for data on historical games and that library contains the lines for every game since 1999. Live games scrape data from ESPN and get the moneylines from The Odds API. If the model and vegas moneylines show a big enough disagreement that game gets flagged</p>
+    </div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/nfl-tool/screens/03-power-rankings.png</div>
+    </div>
+    <img src="nfl-tool/screens/03-power-rankings.png" alt="Power rankings table showing ELO rating and tier for every NFL team">
+    <div class="window-body">
+      <p>A standalone ELO power-rankings system, calculated by simulating every season since 1999 game by game rather than pulling from an outside source. Ratings carry over year to year with regression toward the mean. A team's elo takes into account their historical and present day performances</p>
+    </div>
+  </div>
+
+  <div class="window shot-full">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/nfl-tool/screens/01-live-picks.png</div>
+    </div>
+    <img src="nfl-tool/screens/01-empty-state.png" alt="Live game picks view before the weekly update has been run">
+    <div class="window-body">
+      <p>The live view before hitting refresh, as of writing the 2026-2027 NFL season has not started so the live view is not populated. During the season, one click runs the full weekly pipeline: pulling new schedules, stats, and injury reports, retraining, and generating fresh picks for the upcoming week.</p>
+    </div>
+  </div>
+
+  <div class="window">
+    <div class="titlebar">
+      <div class="dots"><span></span><span></span><span></span></div>
+      <div class="path">~/nfl-tool/NOTES.md</div>
+    </div>
+    <div class="window-body">
+      <p>The model is a pure XGBoost model trained directly on ATS margin (actual result minus Vegas spread), with the Vegas line included as a peer feature rather than a stacking anchor, so it learns its own relationship to the market instead of just correcting it. A separate logistic regression model swaps in for playoff games in January and February, weighted toward Conference Championship and Super Bowl accuracy.</p>
+      <p>The most important finding wasn't a bigger model — it was an asymmetric edge filter. Underdog bets are profitable across every edge size, but favorite bets only turn a profit when the model's edge is small. Applying that filter alone added over $2,000 in ROI versus betting every flagged game unfiltered, and the full backtest nets +$5,418 over 20 seasons at $100/bet on flagged games.</p>
+      <p>Separate XGBoost models handle QB, RB, and WR prop predictions, and a Monte Carlo simulator runs 10,000 season simulations for Super Bowl odds using current ELO adjusted for QB EPA and injuries.</p>
+
+      <div class="tags">
+        <span class="tag">XGBoost</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">React + Electron</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">nflverse</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="links">
+    <a class="btn" href="https://github.com/HLaPides/NFL_Prediction_Tool" target="_blank">view repo</a>
+  </div>
+</div>
+
+<script src="../site.js"></script>
+</body>
+</html>
